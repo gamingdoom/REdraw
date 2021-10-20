@@ -5,7 +5,7 @@ function getWants(out)
     var dlcheck = document.getElementById('dl');
     if (dlcheck.checked == true)
     {
-        copyandcontinue();
+        copyandcontinue(out);
     }
     else
     {

@@ -2,6 +2,7 @@ var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 var canvas = document.createElement('canvas');
 var color = document.getElementById('colordropdown');
 var clearbtn = document.getElementById('clear');
+var timer = document.getElementById('timer');
 document.body.appendChild(canvas);
 document.body.style.margin = 0;
 //canvas.style.position = 'fixed';

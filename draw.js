@@ -43,7 +43,11 @@ function resize(e)
 function draw(e)
 {
     if (e.buttons != 1) return;
-    if (e.touches != 1) return;
+    if (mobile)
+    {
+        if (e.touches != 1) return;
+        e.preventDefault();
+    }
     
     console.log(pos.x,pos.y);
 

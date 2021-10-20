@@ -15,6 +15,7 @@ ctx.canvas.style.marginLeft = 'auto';
 ctx.canvas.style.display = 'block';
 ctx.canvas.id = 'canvas';
 resize();
+starttimer(timer);
 var pos = { x:0, y:0}
 window.addEventListener('resize', resize);
 if (mobile)
@@ -40,6 +41,40 @@ function resize(e)
 {
     ctx.canvas.width = 600;
     ctx.canvas.height = 400;
+}
+function sleep(ms)
+{
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function starttimer(e)
+{
+    var i = 60;
+    while (i > 0)
+    {
+        i--;
+        if (i<10)
+        {
+            e.textContent = "00:0" + i;
+            e.style.color = "red";
+        }
+        else
+        {
+            e.textContent = "00:" + i;
+        }
+        await sleep(1000);
+    }
+    if (mobile)
+    {
+        ctx.canvas.removeEventListener('touchmove', draw);
+        ctx.canvas.removeEventListener('touchstart', setPosition);
+        ctx.canvas.removeEventListener('touchend', setPosition); 
+    }
+    else
+    {
+        ctx.canvas.removeEventListener('mousemove', draw);
+        ctx.canvas.removeEventListener('mousedown', setPosition);
+        ctx.canvas.removeEventListener('mouseenter', setPosition);
+    }
 }
 function draw(e)
 {

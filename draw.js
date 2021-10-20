@@ -18,7 +18,7 @@ var pos = { x:0, y:0}
 window.addEventListener('resize', resize);
 if (mobile)
 {
-    ctx.canvas.addEventListener('ontouchmove', draw);
+    ctx.canvas.addEventListener('touchmove', draw);
     ctx.canvas.addEventListener('touchstart', setPosition);
     ctx.canvas.addEventListener('touchend', setPosition); 
 }

@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 
-function getWants()
+function getWants(out)
 {
     var dlcheck = document.getElementById('dl');
     if (dlcheck.checked == true)
@@ -9,11 +9,11 @@ function getWants()
     }
     else
     {
-        window.location.href = "describe.html";
+        window.location.href = out;
     }
 }
 
-function copyandcontinue()
+function copyandcontinue(out)
 {
 // create temporary link  
 var imageData = canvas.toDataURL("image/png", 0.7);
@@ -25,5 +25,5 @@ tmpLink.href = imageData;
 document.body.appendChild( tmpLink );  
 tmpLink.click();  
 document.body.removeChild( tmpLink );
-window.location.href = "describe.html";
+window.location.href = out;
 }

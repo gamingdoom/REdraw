@@ -1,3 +1,4 @@
+var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 var canvas = document.createElement('canvas');
 var color = document.getElementById('colordropdown');
 var clearbtn = document.getElementById('clear');
@@ -15,9 +16,18 @@ ctx.canvas.id = 'canvas';
 resize();
 var pos = { x:0, y:0}
 window.addEventListener('resize', resize);
-ctx.canvas.addEventListener('mousemove', draw);
-ctx.canvas.addEventListener('mousedown', setPosition);
-ctx.canvas.addEventListener('mouseenter', setPosition);
+if (mobile)
+{
+    ctx.canvas.addEventListener('ontouchmove', draw);
+    ctx.canvas.addEventListener('touchstart', setPosition);
+    ctx.canvas.addEventListener('touchend', setPosition); 
+}
+else
+{
+    ctx.canvas.addEventListener('mousemove', draw);
+    ctx.canvas.addEventListener('mousedown', setPosition);
+    ctx.canvas.addEventListener('mouseenter', setPosition);
+}
 clearbtn.addEventListener('click', clear);
 color.style.marginLeft = ctx.canvas.offsetLeft;
 function setPosition(e)
@@ -33,7 +43,10 @@ function resize(e)
 function draw(e)
 {
     if (e.buttons != 1) return;
+    if (e.touches != 1) return;
     
+    console.log(pos.x,pos.y);
+
     ctx.beginPath();
     ctx.lineWidth = 5;
     ctx.lineCap = 'round';

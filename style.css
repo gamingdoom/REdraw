@@ -1,0 +1,39 @@
+body
+{
+    background-color: rgb(66, 66, 66);
+}
+.text
+{
+    text-align: center; color: white;
+}
+/*
+.canvas
+{
+    background-color: white;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 'auto';
+    margin-left: 'auto';
+    display: 'block';
+}
+*/
+.bottombtn
+{
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 'auto';
+    margin-left: 'auto';
+    margin-top: 10px;
+    display: 'block';
+}
+.desc
+{
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 'auto';
+    margin-left: 'auto';
+    margin-top: 10px;
+    display: 'block';
+}

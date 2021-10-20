@@ -1,16 +1,20 @@
 <html>
     <title>Time to draw!</title>
-    <body style="background-color: rgb(92, 100, 98);">
+    <head><link rel="stylesheet" href="style.css"></link></head>
+    <body>
         <br>
         <br>
-        <h2 style="text-align: center; color: white;">Draw a boat!</h2>
+        <h2 class="text">Draw something!</h2>
         <br>
         <br>
         <select id="colordropdown">
             <option value="#000000">Black</option>
             <option value="#ff0000">Red</option>
         </select>
-        <button id="clear" onclick='<script type = "text/javascript" src = "clear.js" ></script>'>Clear</button>
+        <button id="clear" onclick="clear()">Clear</button>
         <script type = "text/javascript" src = "draw.js" ></script>
     </body>
+    <div class="bottombtn">
+        <button id='continue' onclick="window.location.href='describe.html'">Next</button>
+    </div>
 </html>

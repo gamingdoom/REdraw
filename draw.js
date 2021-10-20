@@ -1,5 +1,6 @@
 var canvas = document.createElement('canvas');
 var color = document.getElementById('colordropdown');
+var clearbtn = document.getElementById('clear');
 document.body.appendChild(canvas);
 document.body.style.margin = 0;
 //canvas.style.position = 'fixed';
@@ -17,6 +18,7 @@ window.addEventListener('resize', resize);
 ctx.canvas.addEventListener('mousemove', draw);
 ctx.canvas.addEventListener('mousedown', setPosition);
 ctx.canvas.addEventListener('mouseenter', setPosition);
+clearbtn.addEventListener('click', clear);
 color.style.marginLeft = ctx.canvas.offsetLeft;
 function setPosition(e)
 {
@@ -42,4 +44,8 @@ function draw(e)
     console.log(pos.x,pos.y);
     ctx.lineTo(pos.x , pos.y);
     ctx.stroke();
+}
+function clear(e)
+{
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }

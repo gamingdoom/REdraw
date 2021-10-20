@@ -1,10 +1,25 @@
 <html>
-    <title>Time to draw!</title>
+    <title>Describe Your Drawing</title>
     <head><link rel="stylesheet" href="style.css"></link></head>
     <body>
         <h2 class="text">How would you describe the image without saying what it is?</h2>
         <h3 class="text">Describe things like the position and shape of the shapes.</h3>
-        <form action="draw2.html" method="GET">
+        <div class="desc">
+            <textarea name="desc" id="description" cols="80" rows="10"></textarea>
+        </div>
+        <h3 id="sendlink" class="text">Send This Link To Your Friend:</h3>
+        <div class="text">
+            <a id="linktxt" class="text"></a>
+        </div>
+        <div id="linck" class="bottombtn">
+            <button type="button" onclick="copylink()">
+                <label for="next">Click To Copy</label>
+              </button>
+            <input id="copy" style="display: none;" type="submit">
+            <script type = "text/javascript" src = "getlink.js" ></script>
+        </div>
+        <script type = "text/javascript" src = "getlink.js" ></script>
+        <!-- <form action="draw2.html" method="GET">
             <div class="desc">
                 <textarea name="desc" id="description" cols="80" rows="10"></textarea>
             </div>
@@ -14,6 +29,6 @@
                   </button>
                 <input id="next" style="display: none;" type="submit">
             </div>
-        </form>
+        </form> -->
     </body>
 </html>

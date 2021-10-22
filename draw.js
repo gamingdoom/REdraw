@@ -23,6 +23,7 @@ if (mobile)
     ctx.canvas.addEventListener('touchmove', draw);
     ctx.canvas.addEventListener('touchstart', setPosition);
     ctx.canvas.addEventListener('touchend', setPosition); 
+    ctx.canvas.preventDefault();
 }
 else
 {

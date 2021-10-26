@@ -6,7 +6,7 @@ function getWants(out)
     if (dlcheck.checked == true)
     {
         upimg();
-        copyandcontinue();
+        copyandcontinue(out);
     }
     else
     {

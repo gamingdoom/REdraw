@@ -1,5 +1,5 @@
 var input = document.getElementById('description').value.replace(/\ /g,"+");
-var linkout = "https://gamingdoom.github.io/REdraw/draw2.html?desc=" + document.getElementById('description').value.replace(/\ /g,"+");
+var linkout = "http://redraw.sanghai.org/draw2.html?desc=" + document.getElementById('description').value.replace(/\ /g,"+");
 console.log(input);
 var alinkout = document.getElementById('linktxt');
 var tarea = document.getElementById('description');
@@ -14,7 +14,7 @@ tarea.addEventListener('keypress', getlink);
 function getlink()
 {
     console.log(document.getElementById('description').value);
-    linkout = "https://gamingdoom.github.io/REdraw/draw2.html?desc=" + document.getElementById('description').value.replace(/\ /g,"+");
+    linkout = "http://redraw.sanghai.org/draw2.html?desc=" + document.getElementById('description').value.replace(/\ /g,"+");
     console.log(linkout);
     alinkout.textContent = linkout;
     sendlink.style.visibility = 'visible';
@@ -23,7 +23,7 @@ function getlink()
 
 function copylink()
 {
-    linkout = "https://gamingdoom.github.io/REdraw/draw2.html?desc=" + document.getElementById('description').value.replace(/\ /g,"+");
+    linkout = "http://redraw.sanghai.org/draw2.html?desc=" + document.getElementById('description').value.replace(/\ /g,"+");
     alinkout.textContent = linkout;
     navigator.clipboard.writeText(linkout);
 }

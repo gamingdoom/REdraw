@@ -1,37 +1,37 @@
 var canvas = document.getElementById('canvas');
+var outvar = "";
 
 function getWants(out)
-{
+{   
+    outvar = out;
     var dlcheck = document.getElementById('dl');
     if (dlcheck.checked)
-    {
-        //upimg();
-        copyandcontinue(out);
+    {   
+        copy();
+        upimg(out);
     }
     else
     {
-        //upimg();
-        window.location.href = out;
+        upimg(out);
     }
 }
-// function upimg()
-// {
-//     var imageData = canvas.toDataURL("image/png")
-//     $.ajax({
-//         type: "POST",
-//         url: "upimg.php",
-//         data: { 
-//            imgBase64: imageData
-//         }
-//       }).done(function(o) {
-//         console.log('saved'); 
-//         // If you want the file to be visible in the browser 
-//         // - please modify the callback in javascript. All you
-//         // need is to return the url to the file, you just saved 
-//         // and than put the image in your browser.
-//       });
-// }
-function copyandcontinue(out)
+function upimg(out)
+{
+    var imageData = canvas.toDataURL("image/png")
+    $.ajax({
+        type: "POST",
+        url: "upimg.php",
+        data: { 
+           image: imageData
+        },
+        dataType: "text",
+        success:function(data) {
+            console.log(data); 
+            window.location.href = out.concat("?code=" + data + "&prevCode=" + window.location.search.split('=')[1]);
+          }
+      });
+}
+function copy()
 {
     // create temporary link  
     var imageData = canvas.toDataURL("image/png", 0.7);
@@ -43,5 +43,4 @@ function copyandcontinue(out)
     document.body.appendChild( tmpLink );  
     tmpLink.click();  
     document.body.removeChild( tmpLink );
-    window.location.href = out;
 }

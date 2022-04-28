@@ -1,5 +1,10 @@
+<!DOCTYPE html>
 <html>
     <title>Describe Your Drawing</title>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
     <head><link rel="stylesheet" href="style.css"></link></head>
     <body>
         <h2 class="text">How would you describe the image without saying what it is?</h2>
@@ -9,28 +14,13 @@
         <div class="desc">
             <textarea name="desc" id="description" cols="80" rows="10"></textarea>
         </div>
-        <h3 id="sendlink" class="text">Send This Link To Your Friend:</h3>
-        <div class="text">
-            <a id="linktxt" class="text"></a>
-        </div>
         <div id="linck" class="bottombtn">
-            <button type="button" onclick="copylink()">
-                <label for="next">Click To Copy</label>
-              </button>
-            <input id="copy" style="display: none;" type="submit">
-            <script type = "text/javascript" src = "getlink.js" ></script>
+            <button id="submit" type="button" onclick="addDescribe()">Submit</button>
+            <h3 id="sendlink" class="text">Send This Code To Your Friend:</h3>
+            <h4 id="code" class="text"></h4>
+            <h3 id="help" class="text">Tell them to go to redraw.sanghai.org and input the code.</h3>>
+            <script type = "text/javascript" src = "sendDescribe.js" ></script>
         </div>
-        <script type = "text/javascript" src = "getlink.js" ></script>
-        <!-- <form action="draw2.html" method="GET">
-            <div class="desc">
-                <textarea name="desc" id="description" cols="80" rows="10"></textarea>
-            </div>
-            <div class="bottombtn">
-                <button type="button">
-                    <label for="next">Next</label>
-                  </button>
-                <input id="next" style="display: none;" type="submit">
-            </div>
-        </form> -->
+        <script type = "text/javascript" src = "sendDescribe.js" ></script>
     </body>
 </html>

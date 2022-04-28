@@ -3,8 +3,17 @@
     <head><link rel="stylesheet" href="style.css"></link></head>
     <body>
         <div class="text">
-            <h2 class="text">REdraw is a game where you draw a picture and then describe it to others.</h1> 
+            <h2 class="text">REdraw is a game where you draw a picture and then describe it to others.</h2> 
             <button onclick="window.location.href='draw.html'">Get Started!</button>
+            <!-- Input code box -->
+            <form action="draw2.html" method="GET">
+                <div class="text">
+                    <h3 class="text">Enter the code you received from your friend:</h3>
+                    <input type="text" name="code" id="code" placeholder="Code">
+                </div>
+                <div class="bottombtn">
+                    <input id="next" type="submit" value="Submit"></input>
+                </div>
         </div>
     </body>
 

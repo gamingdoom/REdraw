@@ -5,7 +5,7 @@
     var currCode = window.location.search.split('&')[0].split('=')[1];
     var prevCode = window.location.search.split('&')[1].split('=')[1];
     var br = document.createElement('br');
-    yourImg.innerHTML = "What you drew:"
+    yourImg.innerHTML = "Que tu dibujaba:"
     div.appendChild(br);
     $.ajax({
         type: "POST",
@@ -24,7 +24,7 @@
     });
     var theirImage = div.appendChild(document.createElement('h1'));
     theirImage.className = 'text';
-    theirImage.innerHTML = "What your friend drew:"
+    theirImage.innerHTML = "Que tu amigo dibujaba:"
     $.ajax({
         type: "POST",
         url: "get.php",

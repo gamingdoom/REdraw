@@ -5,7 +5,7 @@
     var currCode = window.location.search.split('&')[0].split('=')[1];
     var prevCode = window.location.search.split('&')[1].split('=')[1];
     var br = document.createElement('br');
-    yourImg.innerHTML = "Que tu dibujaba:"
+    yourImg.innerHTML = "Que tu dibujabas:"
     div.appendChild(br);
     $.ajax({
         type: "POST",

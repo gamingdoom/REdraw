@@ -1,8 +1,8 @@
-var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 var canvas = document.createElement('canvas');
 var color = document.getElementById('colordropdown');
 var clearbtn = document.getElementById('clear');
 var timer = document.getElementById('timer');
+var suggest = document.getElementById('suggest');
 document.body.appendChild(canvas);
 document.body.style.margin = 0;
 //canvas.style.position = 'fixed';
@@ -14,29 +14,42 @@ ctx.canvas.style.marginRight = 'auto';
 ctx.canvas.style.marginLeft = 'auto';
 ctx.canvas.style.display = 'block';
 ctx.canvas.id = 'canvas';
+ctx.canvas.style["touch-action"] = 'none';
+var isDrawing = false;
 resize();
 starttimer(timer);
-var pos = { x:0, y:0}
+var pos = { x:0, y:0};
 window.addEventListener('resize', resize);
-if (mobile)
-{
-    ctx.canvas.addEventListener('touchmove', draw);
-    ctx.canvas.addEventListener('touchstart', setPosition);
-    ctx.canvas.addEventListener('touchend', setPosition); 
-    ctx.canvas.preventDefault();
-}
-else
-{
-    ctx.canvas.addEventListener('mousemove', draw);
-    ctx.canvas.addEventListener('mousedown', setPosition);
-    ctx.canvas.addEventListener('mouseenter', setPosition);
-}
+ctx.canvas.addEventListener('touchmove', draw);
+ctx.canvas.addEventListener('touchstart', setPosition);
+ctx.canvas.addEventListener('touchend', stopDraw); 
+ctx.canvas.addEventListener('mousemove', draw);
+ctx.canvas.addEventListener('mousedown', setPosition);
+ctx.canvas.addEventListener('mouseup', stopDraw);
+
 clearbtn.addEventListener('click', clear);
 color.style.marginLeft = ctx.canvas.offsetLeft;
+
+getWord();
+
+async function getWord(){
+    // Get list of things
+    $.getJSON('https://raw.githubusercontent.com/dariusk/corpora/master/data/objects/objects.json').done(function(data){
+        var object = data.objects[Math.floor(Math.random() * data.objects.length)];
+        // Check if it starts with a vowel
+        var vowel = (function(object){switch (object.slice(0,1)) {case 'a': case 'e': case 'i': case 'o': case 'u': return "an"; default: return "a"}})(object);
+        suggest.innerHTML = "I suggest " + vowel + " " + object;
+    });
+
+}
+
 function setPosition(e)
 {
-    pos.x = e.clientX - ctx.canvas.offsetLeft;
-    pos.y = e.clientY - ctx.canvas.offsetTop;
+    isDrawing = true;
+    var source = e.touches ? e.touches[0] : e;
+
+    pos.x = source.clientX - ctx.canvas.offsetLeft;
+    pos.y = source.clientY - ctx.canvas.offsetTop + window.scrollY;
 }
 function resize(e)
 {
@@ -64,28 +77,14 @@ async function starttimer(e)
         }
         await sleep(1000);
     }
-    if (mobile)
-    {
-        ctx.canvas.removeEventListener('touchmove', draw);
-        ctx.canvas.removeEventListener('touchstart', setPosition);
-        ctx.canvas.removeEventListener('touchend', setPosition); 
-    }
-    else
-    {
-        ctx.canvas.removeEventListener('mousemove', draw);
-        ctx.canvas.removeEventListener('mousedown', setPosition);
-        ctx.canvas.removeEventListener('mouseenter', setPosition);
-    }
+}
+function stopDraw(e){
+    isDrawing = false;
 }
 function draw(e)
 {
-    if (e.buttons != 1) return;
-    if (mobile)
-    {
-        if (e.touches != 1) return;
-        e.preventDefault();
-    }
-    
+    if (isDrawing == false) return;
+
     console.log(pos.x,pos.y);
 
     ctx.beginPath();
